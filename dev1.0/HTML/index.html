@@ -7,14 +7,32 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <!-- Load Icon Font -->
 <link href="css/webfont.css" rel="stylesheet" type="text/css" />
+
+<!-- Load Responsive tables http://zurb.com/playground/playground/responsive-tables/index.html -->
+<link rel="stylesheet" href="css/responsive-tables.css">
+<!-- Load Data Tables-->
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+
 <!-- Load jQuery library -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- Load Responsive tables http://zurb.com/playground/playground/responsive-tables/index.html -->
+<script src="js/responsive-tables.js"></script>
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
 <!-- Load jCarousel js -->
 <script type="text/javascript" src="js/jquery.jcarousel.js"></script>
 <!-- Load MixItUup js -->
 <script type="text/javascript" src="js/jquery.mixitup.js"></script>
 <!-- Load js -->
 <script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').dataTable( {
+        "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>'
+    } );
+
+	} );	
+</script>
 </head>
 <!-- Start Body -->
 <body>
@@ -54,7 +72,56 @@
 
 	<!-- Start Content -->
 	<div class="content">
+		<div class="section divider">
+			<h2>Panel Compare</h2>
+			<a class="scroll" id="panelCompare"></a>
+		</div>
+			<div class="content panelCompare">
+<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+ 
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
 
+        </tbody>
+    </table>
+
+			</div>			
 		<!-- Start HomePage Section -->
 		<div class="section full">
 			<h2>Latest Work</h2>
