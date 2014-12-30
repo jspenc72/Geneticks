@@ -7,18 +7,15 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <!-- Load Icon Font -->
 <link href="css/webfont.css" rel="stylesheet" type="text/css" />
-
 <!-- Load Responsive tables http://zurb.com/playground/playground/responsive-tables/index.html -->
-<link rel="stylesheet" href="css/responsive-tables.css">
+<link rel="stylesheet" type="text/css" href="css/responsive-tables.css">
 <!-- Load Data Tables-->
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
-
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 <!-- Load jQuery library -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
 <!-- Load Responsive tables http://zurb.com/playground/playground/responsive-tables/index.html -->
 <script src="js/responsive-tables.js"></script>
-<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
 <!-- Load jCarousel js -->
 <script type="text/javascript" src="js/jquery.jcarousel.js"></script>
 <!-- Load MixItUup js -->
@@ -27,10 +24,10 @@
 <script type="text/javascript" src="js/custom.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-    $('#example').dataTable( {
-        "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>'
-    } );
-
+	    $('.dataTable_table').dataTable( {
+	        "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
+	        "scrollX": true
+	    } );
 	} );	
 </script>
 </head>
@@ -49,7 +46,6 @@
 		</ul>
 	</div>
 	<!-- End Menu -->
-	
 	<!-- Start Home -->
 	<a class="scroll" id="home"></a>
 	<div class="home hero">
@@ -66,62 +62,215 @@
 
 	<!-- Start BlockQuote -->
 	<div class="blockquote main">
-		<blockquote>Welcome to <b>GeneticKs</b>, a better way of doing things</blockquote>
+		<blockquote>Welcome to <b>GeneticKs</b></blockquote>
+		<p>Enter the name of a gene below to get started.</p>
+		<input type="search" class="">
 	</div>
 	<!-- End BlockQuote -->
 
 	<!-- Start Content -->
 	<div class="content">
 		<div class="section divider">
-			<h2>Panel Compare</h2>
+			<h2>Panel Compare (Genes)</h2>
 			<a class="scroll" id="panelCompare"></a>
 		</div>
-			<div class="content panelCompare">
-<table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
- 
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
- 
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
+		<div class="content panelCompare">
+			<table class="display dataTable_table" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th>Panel Name</th>
+		                <th>SOX2</th>
+		                <th>SL1</th>
+		                <th>GLF1</th>
+		                <th>BRCA1</th>
+		                <th>BRCA2</th>
+		            </tr>
+		        </thead>
+		 
+		        <tfoot>
+		            <tr>
+		                <th>Panel Name</th>
+		                <th>SOX2</th>
+		                <th>SL1</th>
+		                <th>GLF1</th>
+		                <th>BRCA1</th>
+		                <th>BRCA2</th>
+		            </tr>
+		        </tfoot>
+		 
+		        <tbody>
+	                <tr>
+	                    <td>BAYLOR CARDIAC PANEL</td>
+	                    <td>X</td>
+	                    <td>X</td>
+	                    <td>X</td>
+	                    <td>X</td>
+	                    <td>X</td>
+	                </tr>  
+	                <tr>
+	                    <td>ST FRANCIS CARDIAC PANEL</td>
+	                    <td></td>
+	                    <td>X</td>
+	                    <td></td>
+	                    <td>X</td>
+	                    <td>X</td>
+	                </tr>  
+	                <tr>
+	                    <td>GENEDX CARDIOMYOPATHY PANEL</td>
+	                    <td></td>
+	                    <td>X</td>
+	                    <td></td>
+	                    <td></td>
+	                    <td>X</td>
+	                </tr> 
+		        </tbody>
+		    </table>
 
-        </tbody>
-    </table>
-
-			</div>			
+		</div>		
+		<div class="section divider">
+			<h2>Panels</h2>
+			<a class="scroll" id="panels"></a>
+		</div>		
+		<div class="content panels" >
+			<table class="display dataTable_table" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th>Lab</th>
+		                <th>Panel Name</th>
+		                <th>Location</th>
+		                <th>Sequencing</th>
+		                <th>Cost</th>
+		                <th>Del/Dup</th>
+		                <th>Cost</th>
+		                <th>Turnaround</th>
+		                <th>Express</th>
+		                <th>Exp Turnaround</th>
+		                <th>Exp Cost</th>
+		                <th>Requisition</th>
+		                <th>Collection Instructions</th>
+		            </tr>
+		        </thead>
+		        <tfoot>
+		            <tr>
+		                <th>Lab</th>
+		                <th>Panel Name</th>
+		                <th>Location</th>
+		                <th>Sequencing</th>
+		                <th>Cost</th>
+		                <th>Del/Dup</th>
+		                <th>Cost</th>
+		                <th>Turnaround</th>
+		                <th>Express</th>
+		                <th>Exp Turnaround</th>
+		                <th>Exp Cost</th>
+		                <th>Requisition</th>
+		                <th>Collection Instructions</th>
+		            </tr>
+		        </tfoot>
+		        <tbody>
+	                <tr>
+	                    <td>2Baylor</td>
+	                    <td>Cardiac Panel</td>
+	                    <td>Houston, TX</td>
+	                    <td>X</td>
+	                    <td>$900</td>
+	                    <td>X</td>
+	                    <td>$600</td>
+	                    <td>14 Days</td>
+	                    <td>YES</td>
+	                    <td>10 Days</td>
+	                    <td>$200</td>
+	                    <td>Link to Requisition</td>
+	                    <td>Specimen Collection Instructions</td>
+	                </tr> 
+	                <tr>
+	                    <td>2Baylor</td>
+	                    <td>Cardiac Panel</td>
+	                    <td>Houston, TX</td>
+	                    <td>X</td>
+	                    <td>$800</td>
+	                    <td></td>
+	                    <td>$400</td>
+	                    <td>12 Days</td>
+	                    <td>YES</td>
+	                    <td>7 Days</td>
+	                    <td>$200</td>
+	                    <td>Link to Requisition</td>
+	                    <td>Specimen Collection Instructions</td>
+	                </tr> 
+		        </tbody>
+		    </table>
+		</div>	
+		<div class="section divider">
+			<h2>Tests</h2>
+			<a class="scroll" id="panelCompare"></a>
+		</div>		
+		<div class="content testCompare">
+			<table class="display dataTable_table" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th>Name</th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Age</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		                <th>Name</th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Age</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		            </tr>
+		        </thead>
+		        <tfoot>
+		            <tr>
+		                <th>Name</th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Age</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		                <th>Name</th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Age</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		            </tr>
+		        </tfoot>
+		        <tbody>
+	                <tr>
+	                    <td>1Baylor</td>
+	                    <td>Houston, TX</td>
+	                    <td>X</td>
+	                    <td>$800</td>
+	                    <td>X</td>
+	                    <td>$600</td>
+	                    <td>15 Days</td>
+	                    <td>YES</td>
+	                    <td>10 Days</td>
+	                    <td>$200</td>
+	                    <td>Link to Requisition</td>
+	                    <td>Specimen Collection Instructions</td>
+	                </tr>
+	                <tr>
+	                    <td>2Baylor</td>
+	                    <td>Houston, TX</td>
+	                    <td>X</td>
+	                    <td>$900</td>
+	                    <td>X</td>
+	                    <td>$600</td>
+	                    <td>14 Days</td>
+	                    <td>YES</td>
+	                    <td>10 Days</td>
+	                    <td>$200</td>
+	                    <td>Link to Requisition</td>
+	                    <td>Specimen Collection Instructions</td>
+	                </tr>
+		        </tbody>
+		    </table>
+		</div>	
 		<!-- Start HomePage Section -->
 		<div class="section full">
 			<h2>Latest Work</h2>
@@ -411,20 +560,20 @@
 	<!-- End Content -->
 
 	<!-- Start Section Divider -->
-	<div class="section divider">
+<!-- 	<div class="section divider">
 		<h2 id="servicestitle">Our Services</h2>
 		<a class="scroll" id="services"></a>
-	</div>
+	</div> -->
 	<!-- End Section Divider -->
 
 	<!-- Start Content -->
-	<div class="content">
-
+<!-- 	<div class="content">
+ -->
 		<!-- Start Main Paragraph -->
-		<p class="main dark-gray" id="services">Hover over any of our services to find out more.</p>
-		<!-- Start Main Paragraph -->
+<!-- 		<p class="main dark-gray" id="services">Hover over any of our services to find out more.</p>
+ -->		<!-- Start Main Paragraph -->
 
-		<div class="servicesitem">
+<!-- 		<div class="servicesitem">
 			<div class="front">
 				<div data-icon="&#xe082;" class="icon"></div>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -462,11 +611,11 @@
 			<div class="back">
 				<h3>Rockstars</h3>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- Clear :) -->
-		<div class="clear"></div>
-	</div>
+<!-- 		<div class="clear"></div>
+	</div> -->
 	<!-- End Content -->
 	
 	<!-- Start Section Divider -->
@@ -512,67 +661,6 @@
 		<!-- Clear :) -->
 		<div class="clear"></div>
 		<!-- End Person Block -->
-
-		<!-- Start Person Block -->
-		<div class="person">
-			<div class="image quotefade">
-				<img src="img/person2.jpg">
-				<div class="quotehover">
-					<h5>“You have to do something you’ve never done 
-					to have something you’ve never had.”</h5>
-					<h6>Elizabeth Franklin</h6>
-				</div>
-			</div>
-			<div class="info">
-				<h2>John Doe</h2>
-				<h4 class="light-gray">CEO</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<a href="#" class="socialicon linkedin"></a>
-				<a href="#" class="socialicon facebook"></a>
-				<a href="#" class="socialicon twitter"></a>
-				<a href="#" class="socialicon dribbble"></a>
-				<a href="#" class="socialicon pinterest"></a>
-			</div>
-		</div>
-		<!-- Clear :) -->
-		<div class="clear"></div>
-		<!-- End Person Block -->
-
-		<!-- Start Person Block -->
-		<div class="person">
-			<div class="image quotefade">
-				<img src="img/person3.jpg">
-				<div class="quotehover">
-					<h5>“You have to do something you’ve never done 
-					to have something you’ve never had.”</h5>
-					<h6>Elizabeth Franklin</h6>
-				</div>
-			</div>
-			<div class="info">
-				<h2>John Doe</h2>
-				<h4 class="light-gray">CEO</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<a href="#" class="socialicon linkedin"></a>
-				<a href="#" class="socialicon facebook"></a>
-				<a href="#" class="socialicon twitter"></a>
-				<a href="#" class="socialicon dribbble"></a>
-				<a href="#" class="socialicon pinterest"></a>
-			</div>
-		</div>
-		<!-- Clear :) -->
-		<div class="clear"></div>
-		<!-- End Person Block -->
-
 	</div>
 	<!-- End Content -->
 
@@ -740,61 +828,17 @@
 				tempor incididunt ut labore et dolore magna aliqua.</p>
 
 			</article>
-			<!-- End Article -->
-
-			<!-- Start Article -->
-			<article class="post">
-				<div class="hover">	
-					<div class="postimage">
-						<img src="img/post2.jpg">
-						<div class="posthover"><a class="openpost" href="javascript:void(0);" data-id="2">read more</a></div>
-					</div>
-					<div class="postinfo">
-						<h6 class="mid-gray"><b class="dark-gray">Posted:</b> 17/9/13</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Author:</b> Zan</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Comments:</b> 3</h6>
-					</div>
-				</div>
-
-				<h3>Another boat</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua.</p>
-
-			</article>
-			<!-- End Article -->
-
-			<!-- Start Article -->
-			<article class="post">				
-				<div class="hover">	
-					<div class="postimage">
-						<img src="img/post3.jpg">
-						<div class="posthover"><a class="openpost" href="javascript:void(0);" data-id="2">read more</a></div>
-					</div>
-					<div class="postinfo">
-						<h6 class="mid-gray"><b class="dark-gray">Posted:</b> 17/9/13</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Author:</b> Zan</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Comments:</b> 3</h6>
-					</div>
-				</div>
-
-				<h3>One more boat</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua.</p>
-
-			</article>
-			<!-- End Article -->
-
-			
+			<!-- End Article -->			
 			<!-- Clear :) -->
 			<div class="clear"></div>
 		</div>
 		<!-- End Content -->
 
 		<!-- Start Content -->
-		<div class="content sidebar" id="postsfull">
-
+<!-- 		<div class="content sidebar" id="postsfull">
+ -->
 			<!-- Start Article -->
-			<article class="post full" data-id="1">				
+<!-- 			<article class="post full" data-id="1">				
 				<div class="hover">	
 					<div class="postimage">
 						<img src="img/post1.jpg">
@@ -839,116 +883,18 @@
 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
-			</article>
-			<!-- End Article -->
-
-			<!-- Start Article -->
-			<article class="post full" data-id="2">				
-				<div class="hover">	
-					<div class="postimage">
-						<img src="img/post2.jpg">
-						<div class="posthover"><a class="backtoblog" href="javascript:void(0);" data-id="1"><< back to blog</a></div>
-					</div>
-					<div class="postinfo">
-						<h6 class="mid-gray"><b class="dark-gray">Posted:</b> 17/9/13</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Author:</b> Zan</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Comments:</b> 3</h6>
-					</div>
-				</div>
-				<div class="clear"></div>
-				<h3>Another boat</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</article>
-			<!-- End Article -->
-
-			<!-- Start Article -->
-			<article class="post full" data-id="3">				
-				<div class="hover">	
-					<div class="postimage">
-						<img src="img/post3.jpg">
-						<div class="posthover"><a class="backtoblog" href="javascript:void(0);" data-id="1"><< back to blog</a></div>
-					</div>
-					<div class="postinfo">
-						<h6 class="mid-gray"><b class="dark-gray">Posted:</b> 17/9/13</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Author:</b> Zan</h6>
-						<h6 class="mid-gray"><b class="dark-gray">Comments:</b> 3</h6>
-					</div>
-				</div>
-				<div class="clear"></div>
-				<h3>One more boat</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<br>
-				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</article>
+			</article> -->
 			<!-- End Article -->
 
 			<!-- Clear :) -->
-			<div class="clear"></div>
-		</div>
+<!-- 			<div class="clear"></div>
+		</div> -->
 		<!-- End Content -->
 
 		<!-- Start Sidebar -->
-		<div id="sidebar" class="sidebar">
-			
-			<div class="widget">
+<!-- 		<div id="sidebar" class="sidebar">
+ -->			
+<!-- 			<div class="widget">
 				<h5>Blog Categories</h5>
 				<ul>
 					<li><h6><b class="light-gray">></b> <a href="#">Lifestyle</a><span class="light-gray"> (4)</span></h6></li>
@@ -977,10 +923,10 @@
 				<a class="tweet" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
 				<a class="tweet" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
 			</div>
-			
+			 -->
 			<!-- Clear :) -->
-			<div class="clear"></div>
-		</div>
+<!-- 			<div class="clear"></div>
+		</div> -->
 		<!-- End Sidebar -->
 
 		<!-- Clear :) -->
@@ -990,7 +936,7 @@
 
 	<!-- Start Section Divider -->
 	<div class="section divider">
-		<h2 id="servicestitle">Our Clients</h2>
+		<h2 id="servicestitle">We are</h2>
 		<a class="scroll" id="testimonials"></a>
 	</div>
 	<!-- End Section Divider -->
@@ -999,15 +945,11 @@
 	<div class="content">
 
 		<!-- Start Main Paragraph -->
-		<p id="testimonials" class="main dark-gray">What our clients have to say about our work.</p>
+		<p id="testimonials" class="main dark-gray"></p>
 		<!-- Start Main Paragraph -->
 
 		<div class="logos">
-			<img data-text="Lorem ipsum something" src="img/logo.png">
-			<img data-text="Lorem ipsum something" src="img/logo.png">
-			<img data-text="Lorem ipsum something" src="img/logo.png">
-			<img data-text="Lorem ipsum something" src="img/logo.png">
-			<img data-text="Lorem ipsum something" src="img/logo.png">
+			<img data-text="" src="img/logo.png">
 		</div>
 
 		<!-- Clear :) -->
@@ -1016,19 +958,19 @@
 	<!-- End Content -->
 	
 	<!-- Start Section Divider -->
-	<div class="section divider">
+<!-- 	<div class="section divider">
 		<h2 id="servicestitle">Contact Us</h2>
 		<a class="scroll" id="contact"></a>
-	</div>
+	</div> -->
 	<!-- End Section Divider -->
 
 	<!-- Start Content -->
-	<div class="content contact">
-
+<!-- 	<div class="content contact">
+ -->
 		<!-- Start Main Paragraph -->
-		<p class="main dark-gray">Drop us a line!</p>
-		<!-- Start Main Paragraph -->
-		
+<!-- 		<p class="main dark-gray">Drop us a line!</p>
+ -->		<!-- Start Main Paragraph -->
+<!-- 		
 		<label>Name</label><br>
 		<input type="text" value="" class="form"><br>
 		
@@ -1039,14 +981,14 @@
 		<textarea rows="3" class="form"></textarea>
 
 
-
+ -->
 		<!-- Clear :) -->
-		<div class="clear"></div>
-	</div>
+<!-- 		<div class="clear"></div>
+	</div> -->
 	<!-- End Content -->
 	
 	<footer class="footer">
-		<a href="http://ninetofive.me"><h6>© Copyright 2014 | ninetofive.me</h6></a>
+		<a href="http://www.geneticks.org"><h6>© Copyright 2014 | GeneticKs.org</h6></a>
 	</footer>
 
 </body>
