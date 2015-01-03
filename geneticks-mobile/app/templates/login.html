@@ -1,25 +1,318 @@
-<div class="modal">
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
-      </div>
-    </form>
+<ion-view title="Login">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <style>
+
+	  #one,#two,#three,#four,#five,#six,#onex,#twox,#threex,#fourx,#fivex,#sixx,#seven,#eight,#nine,#ten,#eleven,#twelve,#thirt,#fourt,#sevenx,#eightx,#ninex,#tenx,#elevenx,#twelvex,#thirtx,#fourtx{position: relative;}
+
+	  /*#onex,#twox,#threex,#fourx,#fivex,#sixx,#sevenx,#eightx,#ninex,#tenx,#elevenx,#twelvex,#thirtx,#fourtx{color:blue}
+	  #one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#ten,#eleven,#twelve,#thirt,#fourt{color:red}*/
+
+	.Monomer.Adenine {
+		width: 10px;
+		height: 5.5px;
+		background: green;
+		position: relative;
+	}
+	.Monomer.Adenine:before {
+		content: "";
+		position: absolute;
+		top: -2.4px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-bottom: 2.4px solid green;
+	}
+	.Monomer.Adenine:after {
+		content: "";
+		position: absolute;
+		bottom: -1.2px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-top: 2.4px solid green;
+	}
+
+
+
+		
+	.Monomer.Guanidine {
+		width: 10px;
+		height: 5.5px;
+		background: blue;
+		position: relative;
+	}
+	.Monomer.Guanidine:before {
+		content: "";
+		position: absolute;
+		top: -2.4px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-bottom: 2.4px solid blue;
+	}
+	.Monomer.Guanidine:after {
+		content: "";
+		position: absolute;
+		bottom: -1.2px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-top: 2.4px solid blue;
+	}
+
+
+
+
+	.Monomer.Thymine {
+		width: 10px;
+		height: 5.5px;
+		background: red;
+		position: relative;
+	}
+	.Monomer.Thymine:before {
+		content: "";
+		position: absolute;
+		top: -2.4px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-bottom: 2.4px solid red;
+	}
+	.Monomer.Thymine:after {
+		content: "";
+		position: absolute;
+		bottom: -1.2px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-top: 2.4px solid red;
+	}			
+
+
+	.Monomer.Cytosine {
+		width: 10px;
+		height: 5.5px;
+		background: purple;
+		position: relative;
+	}
+	.Monomer.Cytosine:before {
+		content: "";
+		position: absolute;
+		top: -2.4px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-bottom: 2.4px solid purple;
+	}
+	.Monomer.Cytosine:after {
+		content: "";
+		position: absolute;
+		bottom: -1.2px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-left: 4.8px solid transparent;
+		border-right: 4.8px solid transparent;
+		border-top: 2.4px solid purple;
+	}			
+
+
+	  .Adenine{color:green;}
+	  .Guanidine{color:blue;}
+	  .Thymine{color:red;}
+	  .Cytosine{color:purple;}
+
+	  #one,#onex{top:20%}
+	  #two,#twox{top:25%}
+	  #three,#threex{top:30%}
+	  #four,#fourx{top:35%}
+	  #five,#fivex{top:40%}
+	  #six,#sixx{top:45%}
+	  #seven,#sevenx{top:50%}
+	  #eight,#eightx{top:55%}
+	  #nine,#ninex{top:60%}
+	  #ten,#tenx{top:65%}
+	  #eleven,#elevenx{top:70%}
+	  #twelve,#twelvex{top:75%}
+	  #thirt,#thirtx{top:80%}
+	  #fourt,#fourtx{top:85%}
+
+	  #one,#nine{
+	      -webkit-animation: one 4s infinite;
+	      -moz-animation: one 4s infinite;
+	    }
+	  #onex,#ninex{
+	      -webkit-animation: onex 4s 2s infinite;
+	      -moz-animation: onex 4s 2s infinite;
+	    }
+	    
+	  #two,#ten{
+	      -webkit-animation: one 4s 0.5s infinite;
+	      -moz-animation: one 4s 0.5s infinite;
+	    }
+	  #twox,#tenx{
+	      -webkit-animation: onex 4s 2.5s infinite;
+	      -moz-animation: onex 4s 2.5s infinite;
+	    }
+	    
+	  #three,#eleven{
+	      -webkit-animation: one 4s 1s infinite;
+	      -moz-animation: one 4s 1s infinite;
+	    } 
+	  #threex,#elevenx{
+	      -webkit-animation: onex 4s 3s infinite;
+	      -moz-animation: onex 4s 3s infinite;
+	    }
+	    
+	  #four,#twelve{
+	      -webkit-animation: one 4s 1.5s infinite;
+	      -moz-animation: one 4s 1.5s infinite;
+	    }
+	  #fourx,#twelvex{
+	      -webkit-animation: onex 4s 3.5s infinite;
+	      -moz-animation: onex 4s 3.5s infinite;
+	    }
+	    
+	  #five,#thirt{
+	      -webkit-animation: one 4s 2s infinite;
+	      -moz-animation: one 4s 2s infinite;
+	    }
+	  #fivex,#thirtx{
+	      -webkit-animation: onex 4s infinite;
+	    -moz-animation: onex 4s infinite;
+	    }
+	    
+	  #six,#fourt{
+	      -webkit-animation: one 4s 2.5s infinite;
+	      -moz-animation: one 4s 2.5s infinite;
+	    }
+	  #sixx,#fourtx{
+	      -webkit-animation: onex 4s 0.5s infinite;
+	      -moz-animation: onex 4s 0.5s infinite;
+	    }  
+	    
+	  #seven{
+	      -webkit-animation: one 4s 3s infinite;
+	      -moz-animation: one 4s 3s infinite;
+	    }
+	  #sevenx{
+	      -webkit-animation: onex 4s 1s infinite;
+	      -moz-animation: onex 4s 1s infinite;
+	    } 
+	    
+	  #eight{
+	      -webkit-animation: one 4s 3.5s infinite;
+	    -moz-animation: one 4s 3.5s infinite;
+	    }
+	  #eightx{
+	      -webkit-animation: onex 4s 1.5s infinite;
+	      -moz-animation: onex 4s 1.5s infinite;
+	    }  
+	      
+	  @-webkit-keyframes one{
+	      0%   { left:30%;  z-index: 0; -webkit-transform: scale(1)}
+	      25%  { -webkit-transform: scale(2); }
+	      50%  { left:70%; z-index: 1; -webkit-transform: scale(1)}
+	      75%  { -webkit-transform: scale(0.5); }
+	      100% { left:30%;  z-index: 0; -webkit-transform: scale(1)}
+	    }
+	    
+	  @-webkit-keyframes onex{
+	      0%   { left:30%;  z-index: 1; -webkit-transform: scale(1)}
+	      25%  { -webkit-transform: scale(2); }
+	      50%  { left:70%; z-index: 0; -webkit-transform: scale(1)}
+	      75%  { -webkit-transform: scale(0.5); }
+	      100% { left:30%;  z-index: 1; -webkit-transform: scale(1)}
+	    }
+	    
+	  @-moz-keyframes one{
+	      0%   { left:30%;  z-index: 0; -moz-transform: scale(1)}
+	      25%  { -moz-transform: scale(2); }
+	      50%  { left:70%; z-index: 1; -moz-transform: scale(1)}
+	      75%  { -moz-transform: scale(0.5); }
+	      100% { left:30%;  z-index: 0; -moz-transform: scale(1)}
+	    }
+	    
+	  @-moz-keyframes onex{
+	      0%   { left:30%;  z-index: 1; -moz-transform: scale(1)}
+	      25%  { -moz-transform: scale(2); }
+	      50%  { left:70%; z-index: 0; -moz-transform: scale(1)}
+	      75%  { -moz-transform: scale(0.5); }
+	      100% { left:30%;  z-index: 1; -moz-transform: scale(1)}
+	    }  
+  </style>
+  <ion-content class="has-header">
+	<div class="row responsive-md dark">
+		<div class="col" style="min-height:50%;">
+			<div id="one"   class="Monomer Adenine"></div>
+			<div id="onex"  class="Monomer Thymine"></div>
+			<div id="two"   class="Monomer Guanidine"></div>
+			<div id="twox"  class="Monomer Cytosine"></div>
+			<div id="three" class="Monomer Adenine"></div>
+			<div id="threex"  class="Monomer Thymine"></div>
+			<div id="four"  class="Monomer Guanidine"></div>
+			<div id="fourx" class="Monomer Cytosine"></div>
+			<div id="five"  class="Monomer Adenine"></div>
+			<div id="fivex" class="Monomer Thymine"></div>
+			<div id="six"   class="Monomer Guanidine"></div>
+			<div id="sixx"  class="Monomer Cytosine"></div>
+			<div id="seven" class="Monomer Adenine"></div>
+			<div id="sevenx"  class="Monomer Thymine"></div>
+			<div id="eight" class="Monomer Guanidine"></div>
+			<div id="eightx"  class="Monomer Cytosine"></div>
+			<div id="nine"  class="Monomer Adenine"></div>
+			<div id="ninex" class="Monomer Thymine"></div>
+			<div id="ten"   class="Monomer Guanidine"></div>
+			<div id="tenx"  class="Monomer Cytosine"></div>
+			<div id="eleven"  class="Monomer Adenine"></div>
+			<div id="elevenx" class="Monomer Thymine"></div>
+			<div id="twelve"  class="Monomer Guanidine"></div>
+			<div id="twelvex" class="Monomer Cytosine"></div>
+			<div id="thirt" class="Monomer Adenine"></br>A</div>
+			<div id="thirtx"  class="Monomer Thymine"></br>T</div>
+			<div id="fourt" class="Monomer Guanidine"></br>G</div>
+			<div id="fourtx"  class="Monomer Cytosine"></br>C</div>
+		</div>
+		<div class="col">
+			<form style="background:transparent;">
+				<div class="list list-inset" style="background:transparent;">
+					<label class="item item-input item-floating-label">
+					    <span class="input-label positive">Email</span>
+						<input type="email" placeholder="Email" style="color:blue;" ng-model="loginData.user.email" >
+					</label>
+					<label class="item item-input item-floating-label">
+					    <span class="input-label positive" >Password</span>
+						<input type="password" placeholder="Password" style="color:blue;" ng-model="loginData.user.password" >
+					</label>
+					<button type="submit" class="button button-block button-dark" ng-click="doLogin()">Login</button>
+					<button class="button button-clear button-positive" ng-click="login()">
+					  Sign Up
+					</button>
+					<button class="button button-clear button-assertive" ng-click="doLogout()">
+					  Sign Out
+					</button>
+					<button class="button button-clear button-positive" ng-click="doCheckSession()">
+					  Check Session
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
   </ion-content>
-</div>
+</ion-view>

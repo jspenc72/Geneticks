@@ -1,0 +1,27 @@
+<div class="modal">
+  <!-- Modal header bar -->
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">Gene</h1>
+    <button class="button button-clear button-positive" ng-click="geneModal.hide()">Cancel</button>
+  </ion-header-bar>
+  <!-- Modal content area -->
+  <ion-content>
+    <form>
+      <div class="list">
+        <div class="item item-divider">
+          Gene Info
+        </div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label positive">Gene</span>
+          <input type="text" placeholder="Title" ng-model="gene.title">
+        </label>
+        <div class="padding" ng-show="shouldCreateGene">
+          <button type="submit" class="button button-block button-positive" ng-click="create(gene)">Create Gene</button>
+        </div>
+        <div class="padding" ng-show="shouldUpdateGene">
+          <button type="submit" class="button button-block button-positive" ng-click="update(gene)">Update Gene</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</div>

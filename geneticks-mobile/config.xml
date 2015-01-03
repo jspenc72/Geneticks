@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.Geneticks" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.geneticks.Geneticks" version="0.0.1" ios-CFBundleVersion="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Geneticks</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A hand held reference companion for the Geneticist.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="jspenc72@gmail.com" href="http://cordova.io">
         Apache Cordova Team
     </author>
     <content src="index.html" />

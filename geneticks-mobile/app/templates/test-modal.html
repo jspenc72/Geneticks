@@ -1,0 +1,27 @@
+<div class="modal">
+  <!-- Modal header bar -->
+  <ion-header-bar class="bar-secondary">
+    <h1 class="title">Test</h1>
+    <button class="button button-clear button-positive" ng-click="testModal.hide()">Cancel</button>
+  </ion-header-bar>
+  <!-- Modal content area -->
+  <ion-content>
+    <form>
+      <div class="list">
+        <div class="item item-divider">
+          Test Info
+        </div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label positive">Test</span>
+          <input type="text" placeholder="Title" ng-model="test.title">
+        </label>
+        <div class="padding" ng-show="shouldCreateTest">
+          <button type="submit" class="button button-block button-positive" ng-click="create(test)">Create Test</button>
+        </div>
+        <div class="padding" ng-show="shouldUpdateTest">
+          <button type="submit" class="button button-block button-positive" ng-click="update(test)">Update Test</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</div>
