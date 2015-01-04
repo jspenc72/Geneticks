@@ -7,18 +7,19 @@ angular.module('Geneticks.services', [])
 	if(window.sqlitePlugin){
 		console.log(window.sqlitePlugin);
 	}
-  var settings = eval(JSON.parse(localStorage.getItem('GENETICKS_DEVICE_SETTINGS')));
-  if(settings[0].checked==true){
-    //Store info on Geneticks Cloud is set to true
-    alert("test");
-    var genedb = new PouchDB('http://api.geneticks.org:5984/'+userdb_pri_remote.dbname());
-  }else if(settings[0].checked==false){
-    alert("test");
-    var genedb = new PouchDB('geneticks');
-  }else{
-    //Unknown setting
-  }
+  // var settings = eval(JSON.parse(localStorage.getItem('GENETICKS_DEVICE_SETTINGS')));
+  // if(settings[0].checked==true){
+  //   //Store info on Geneticks Cloud is set to true
+  //   alert("test");
+  //   var genedb = new PouchDB('http://api.geneticks.org:5984/'+userdb_pri_remote.dbname());
+  // }else if(settings[0].checked==false){
+  //   alert("test");
+  //   var genedb = new PouchDB('geneticks');
+  // }else{
+  //   //Unknown setting
+  // }
   // var genedb = new PouchDB('http://api.geneticks.org:5984/'+userdb_pri_remote.dbname());
+  var genedb = new PouchDB('geneticks');
 
 	genedb.info(function(err, info) { 
 		console.log(info);
