@@ -1,19 +1,31 @@
 'use strict';
 angular.module('Geneticks.services', [])
-.factory('$db', function() {
+.factory('$db', function(userdb_pub_remote, userdb_pri_remote) {
 	// PouchDB.destroy('geneticks', function(err, info) { 
 	// 	console.log(info);
 	// });
 	if(window.sqlitePlugin){
 		console.log(window.sqlitePlugin);
 	}
-	var genedb = new PouchDB('geneticks'); 
+  var settings = eval(JSON.parse(localStorage.getItem('GENETICKS_DEVICE_SETTINGS')));
+  if(settings[0].checked==true){
+    //Store info on Geneticks Cloud is set to true
+    alert("test");
+    var genedb = new PouchDB('http://api.geneticks.org:5984/'+userdb_pri_remote.dbname());
+  }else if(settings[0].checked==false){
+    alert("test");
+    var genedb = new PouchDB('geneticks');
+  }else{
+    //Unknown setting
+  }
+  // var genedb = new PouchDB('http://api.geneticks.org:5984/'+userdb_pri_remote.dbname());
 
 	genedb.info(function(err, info) { 
 		console.log(info);
 		console.log(genedb.adapter);
 
 	})
+
 	genedb.setSchema([
 	  {
 	    singular: 'gene',
@@ -178,12 +190,17 @@ angular.module('Geneticks.services', [])
     }       
   }
   return{
-    init: function(){
-  		var db = new PouchDB('http://api.geneticks.com:5984/'+x(localStorage.getItem('FMD_USER')));
-  		return db;
+    init: function(username){
+      console.log(x(localStorage.getItem('GENETICKS_USER')));
+      if(username){
+        var db = new PouchDB('http://api.geneticks.org:5984/'+x(username));
+      }else{
+
+      }
+      return db;
     },
     dbname: function(){
-      return x(localStorage.getItem('FMD_USER'));
+      return x(localStorage.getItem('GENETICKS_USER'));
     }
   }
 })
@@ -204,18 +221,16 @@ angular.module('Geneticks.services', [])
   }
   return{
     init: function(username){
-  		var db = new PouchDB('http://api.geneticks.com:5984');
       if(username){
-        var db = new PouchDB('http://api.geneticks.com:5984/'+username);
+        var db = new PouchDB('http://api.geneticks.org:5984/'+x(username));
       }else{
-        var db = new PouchDB('http://api.geneticks.com:5984/');
+
       }
       return db;
 
     },
     dbname: function(username){
-      console.log()
-      return x(localStorage.getItem('FMD_USER'));
+      return x(localStorage.getItem('GENETICKS_USER'));
     }
   }
 })
@@ -237,13 +252,13 @@ angular.module('Geneticks.services', [])
   }
   return{
     init: function(){
-      var db = new PouchDB(x(localStorage.getItem('FMD_USER')));
+      var db = new PouchDB(x(localStorage.getItem('GENETICKS_USER')));
       return db;
     },
     setUser: function(username){
-      localStorage['FMD_USER'] = username;  
-      console.log(localStorage.getItem('FMD_USER'));
-      return localStorage.getItem('FMD_USER');
+      localStorage['GENETICKS_USER'] = username;  
+      console.log(localStorage.getItem('GENETICKS_USER'));
+      return localStorage.getItem('GENETICKS_USER');
     },
     destroy: function(dbname){
       var db = new PouchDB(dbname);
@@ -256,7 +271,7 @@ angular.module('Geneticks.services', [])
       });
     },
     info: function(callback){
-      var db = new PouchDB(x(localStorage.getItem('FMD_USER')));
+      var db = new PouchDB(x(localStorage.getItem('GENETICKS_USER')));
       db.info(function(err, info) { 
         if(err){
           console.log(err);
@@ -287,13 +302,13 @@ angular.module('Geneticks.services', [])
   }
   return{
     init: function(){
-      var db = new PouchDB(x(localStorage.getItem('FMD_USER')));
+      var db = new PouchDB(x(localStorage.getItem('GENETICKS_USER')));
       return db;
     },
     setUser: function(username){
-      localStorage['FMD_USER'] = username;  
-      console.log(localStorage.getItem('FMD_USER'));
-      return localStorage.getItem('FMD_USER');
+      localStorage['GENETICKS_USER'] = username;  
+      console.log(localStorage.getItem('GENETICKS_USER'));
+      return localStorage.getItem('GENETICKS_USER');
     },
     destroy: function(dbname){
       var db = new PouchDB(dbname);
@@ -306,7 +321,7 @@ angular.module('Geneticks.services', [])
       });
     },
     info: function(callback){
-      var db = new PouchDB(x(localStorage.getItem('FMD_USER')));
+      var db = new PouchDB(x(localStorage.getItem('GENETICKS_USER')));
       db.info(function(err, info) { 
         if(err){
           console.log(err);
@@ -347,9 +362,17 @@ angular.module('Geneticks.services', [])
     db.login(username, password, function (err, response) {
       if(response){
         console.log(response);
+        if(response.ok==true){
+          localStorage['GENETICKS_USER'] = response.name;
+        }
       }
       if (err) {
-        console.log(err);
+        if (err.name === 'unauthorized') {
+          console.log('name or password incorrect');
+        } else {
+          console.log('cosmic rays, a meteor, etc.');
+          // cosmic rays, a meteor, etc.
+        }
       }
     });
   };
@@ -360,6 +383,7 @@ angular.module('Geneticks.services', [])
         // network 
         console.log(err);
       }else{
+        localStorage['GENETICKS_USER'] = '';
         console.log(response);
       }
     })
@@ -376,6 +400,8 @@ angular.module('Geneticks.services', [])
         console.log(response);
       } else{
         console.log(response);        
+        var storedUSERNAME = localStorage.getItem('GENETICKS_USER');
+        console.log('Stored Username: '+storedUSERNAME);
         // response.userCtx.name is the current user
       }
     });

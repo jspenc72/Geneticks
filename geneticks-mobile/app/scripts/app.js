@@ -102,6 +102,16 @@ angular.module('Geneticks', ['ionic', 'config', 'Geneticks.controllers', 'Geneti
       }
     })
 
+    .state('app.settings', {
+      url: '/settings',
+      views: {
+        'menuContent' :{
+          templateUrl: 'templates/settings.html',
+          controller: 'SettingsCtrl'
+        }
+      }
+    })
+
     .state('app.genes', {
       url: '/genes',
       views: {
@@ -163,6 +173,6 @@ angular.module('Geneticks', ['ionic', 'config', 'Geneticks.controllers', 'Geneti
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/tests');
+  $urlRouterProvider.otherwise('/app/login');
 });
 

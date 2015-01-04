@@ -1,0 +1,17 @@
+<ion-view title="Settings">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+	<ion-list>
+        <ion-toggle ng-repeat="item in settingsList"
+            ng-model="item.checked" 
+            ng-checked="item.checked"
+            ng-change="updateSettings()"
+                    >
+          {{ item.text }}
+        </ion-toggle>
+		<button class="button button-block button-assertive" ng-click="restoreDefaultSettings()">Restore Default Settings</button>
+	</ion-list>
+  </ion-content>
+</ion-view>

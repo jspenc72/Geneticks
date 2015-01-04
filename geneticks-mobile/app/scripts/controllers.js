@@ -4,7 +4,7 @@ angular.module('Geneticks.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $ionicScrollDelegate, $timeout, $db, Tests, GeneticksAuth, userdb_pub_remote, userdb_pri_remote) {
   // Form data for the login modal
   $scope.loginData = {};
-
+  $scope.tests = [];
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login-modal.html', {
     scope: $scope
@@ -52,6 +52,22 @@ angular.module('Geneticks.controllers', [])
     GeneticksAuth.session();
   }
 
+  $scope.testConnection = function(){
+    userdb_pri_remote.init($scope.loginData.user.email).post({
+      name: 'David',
+      age: 67
+    }, function(err, response){
+      if(err){
+        console.log("error");
+        
+        console.log(err);
+      }else{
+        console.log("success");
+        console.log(response);
+      }        
+    });      
+  }
+
   $scope.saveTests = function(myTests){
     console.log("Saving Tests");
     console.log(myTests.length);
@@ -62,20 +78,33 @@ angular.module('Geneticks.controllers', [])
       // Tests.create(jTest);
       progress = j/myTests.length*100;
       console.log(progress.toFixed(2)+"%");
+      $scope.tests.push(myTests[j]);     
     }    
-
-    Tests.bulk(myTests, function(err, response){
-      console.log("callback");
-      if(err){
-        console.log("error");
+    $scope.tests = myTests;
+    console.log($scope.loginData.user.email);
+    // userdb_pri_remote.init($scope.loginData.user.email).bulkDocs(myTests, function(err, response){
+    //   console.log("callback");
+    //   if(err){
+    //     console.log("error");
         
-        console.log(err);
-      }else{
-        console.log("success");
-        console.log(response);
-      }
+    //     console.log(err);
+    //   }else{
+    //     console.log("success");
+    //     console.log(response);
+    //   }      
+    // });
 
-    });
+    // Tests.bulk(myTests, function(err, response){
+    //   console.log("callback");
+    //   if(err){
+    //     console.log("error");
+        
+    //     console.log(err);
+    //   }else{
+    //     console.log("success");
+    //     console.log(response);
+    //   }
+    // });
     return console.log("Save Complete");
   }
   $scope.reloadTests = function(){
@@ -154,6 +183,26 @@ angular.module('Geneticks.controllers', [])
 .controller('LoginCtrl', function($scope, $stateParams, Genes) {
 })
 
+.controller('SettingsCtrl', function($scope, $stateParams) {
+  $scope.settingsList = [
+    { text: "Use Geneticks Cloud", checked: true },
+    { text: "Remember My Account", checked: true }
+  ];
+
+  $scope.restoreDefaultSettings = function(){
+    $scope.settingsList = [
+      { text: "Use Geneticks Cloud", checked: true },
+      { text: "Remember My Account", checked: true }
+    ];
+    localStorage['GENETICKS_DEVICE_SETTINGS'] = JSON.stringify($scope.settingsList);
+    console.log(JSON.parse(localStorage.getItem('GENETICKS_DEVICE_SETTINGS')));
+  };
+  $scope.updateSettings = function(){
+    console.log("Settings were updated");
+    localStorage['GENETICKS_DEVICE_SETTINGS'] = JSON.stringify($scope.settingsList);    
+  }
+})
+
 .controller('GenesCtrl', function($scope, $ionicModal, Genes) {
   $scope.init = function(){
     Genes.all()
@@ -225,6 +274,7 @@ angular.module('Geneticks.controllers', [])
   $scope.update = function(doc){
     Tests.update(doc);
     $scope.testModal.hide();
+    $scope.init();
   }
   $scope.new = function(){
     $scope.shouldCreateTest = true;
@@ -235,15 +285,17 @@ angular.module('Geneticks.controllers', [])
   $scope.create = function(doc){
     Tests.create(doc);
     $scope.testModal.hide();
+    $scope.init();
   }
   $scope.delete = function(doc){
     //if Confirm Delete
     $scope.destroy(doc);
     //if Cancel, Do nothing
-
+    $scope.init();
   }
   $scope.destroy = function(doc){
     Tests.destroy(doc);
+    $scope.init();
   }
   /////////////////
   //MODALS
